@@ -1,0 +1,34 @@
+boolean d=false; 
+int ip_signal= A1; 
+int op_signal = 10;
+void setup()
+{
+pinMode(op_signal, OUTPUT); 
+pinMode(ip_signal, INPUT); 
+Serial.begin(9600);
+}
+void loop()
+{
+if(d==false)
+{
+int a=0;
+int b=32000; 
+while(a<b)
+{
+if(digitalRead(ip_signal)==HIGH)
+{
+digitalWrite(op_signal,HIGH); 
+delay(1000);
+a=a+1000;
+Serial.println(a);
+}
+if(digitalRead(ip_signal)==LOW)
+{
+digitalWrite(op_signal,LOW); 
+a=a;
+}
+}
+digitalWrite(op_signal,LOW); 
+d=true;
+}
+}
